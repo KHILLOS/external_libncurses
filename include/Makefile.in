@@ -111,7 +111,7 @@ all \
 libs \
 depend \
 sources \
-install ::	$(AUTO_SRC)
+$(AUTO_SRC):	../config.status
 
 curses.h :	$(CAPLIST) \
 		curses.head \
