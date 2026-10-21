@@ -26,6 +26,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 /* gleaned from a web-search, shows a bug combining scanw and implicit scroll.
  * Date:  1997/03/17
  * From:  bayern@morpheus.cis.yale.edu

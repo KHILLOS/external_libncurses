@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: popup_msg.h,v 1.5 2020/02/02 23:34:34 tom Exp $
  *
  * Utility functions for a popup-message or help-screen.

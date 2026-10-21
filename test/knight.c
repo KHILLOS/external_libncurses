@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * Knight's Tour - a brain game
  *
  * The original of this game was anonymous.  It had an unbelievably bogus

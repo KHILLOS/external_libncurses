@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: demo_panels.c,v 1.48 2022/12/04 00:40:11 tom Exp $
  *
  * Demonstrate a variety of functions from the panel library.

@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: demo_altkeys.c,v 1.17 2023/02/25 18:08:02 tom Exp $
  *
  * Demonstrate the define_key() function.

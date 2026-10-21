@@ -1,4 +1,7 @@
 /******************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 /* asciixmas                                                                  */
 /* December 1989             Larry Bartz           Indianapolis, IN           */
 /*                                                                            */

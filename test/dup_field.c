@@ -26,6 +26,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: dup_field.c,v 1.7 2022/12/10 23:31:31 tom Exp $
  *
  * Demonstrate dup_field().

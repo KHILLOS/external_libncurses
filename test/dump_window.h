@@ -26,6 +26,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: dump_window.h,v 1.2 2020/02/02 23:34:34 tom Exp $
  */
 #ifndef DUMP_WINDOW_H_incl

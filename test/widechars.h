@@ -26,6 +26,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 #ifndef __WIDECHARS_H
 #define __WIDECHARS_H 1

@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: test_arrays.c,v 1.13 2022/12/10 23:23:27 tom Exp $
  *
  * Author: Thomas E Dickey

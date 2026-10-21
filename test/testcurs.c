@@ -8,6 +8,9 @@
  *
  * $Id: testcurs.c,v 1.57 2022/12/10 23:35:36 tom Exp $
  */
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 #include <test.priv.h>
 

@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: chgat.c,v 1.20 2022/12/10 23:31:31 tom Exp $
  *
  * test-driver for chgat/wchgat/mvchgat/mvwchgat

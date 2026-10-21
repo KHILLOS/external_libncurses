@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: clip_printw.c,v 1.21 2022/12/10 23:31:31 tom Exp $
  *
  * demonstrate how to use printw without wrapping.

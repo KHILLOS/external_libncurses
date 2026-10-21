@@ -26,6 +26,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 /* $Id: panel.priv.h,v 1.30 2020/09/26 18:05:32 tom Exp $ */
 

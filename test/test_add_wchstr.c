@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: test_add_wchstr.c,v 1.34 2022/12/10 22:28:50 tom Exp $
  *
  * Demonstrate the waddwchstr() and wadd_wch functions.

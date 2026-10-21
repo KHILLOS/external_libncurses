@@ -26,6 +26,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 /* $Id: c_varargs_to_ada.h,v 1.5 2020/02/02 23:34:34 tom Exp $ */
 

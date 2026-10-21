@@ -26,6 +26,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 #include <curses.priv.h>
 
 MODULE_ID("$Id: wcwidth.c,v 1.4 2020/07/11 21:02:10 tom Exp $")

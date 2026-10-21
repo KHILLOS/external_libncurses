@@ -1,4 +1,7 @@
 /* $Id: tclock.c,v 1.48 2023/02/25 16:42:22 tom Exp $ */
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 #define NEED_TIME_H
 #include <test.priv.h>

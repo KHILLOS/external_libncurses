@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * bs.c - original author: Bruce Holloway
  *		salvo option by: Chuck A DeGaul
  * with improved user interface, autoconfiguration and code cleanup

@@ -26,6 +26,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: move_field.c,v 1.14 2022/12/10 23:31:31 tom Exp $
  *
  * Demonstrate move_field().

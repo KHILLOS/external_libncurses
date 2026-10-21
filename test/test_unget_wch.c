@@ -26,6 +26,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: test_unget_wch.c,v 1.4 2022/12/10 23:31:31 tom Exp $
  *
  * Demonstrate the unget_wch and unget functions.

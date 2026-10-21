@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: firework.c,v 1.40 2022/12/04 00:40:11 tom Exp $
  */
 #include <test.priv.h>

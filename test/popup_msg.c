@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: popup_msg.c,v 1.11 2021/12/18 21:19:19 tom Exp $
  *
  * Show a multi-line message in a window which may extend beyond the screen.

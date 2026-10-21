@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: test_vidputs.c,v 1.15 2022/12/10 23:23:27 tom Exp $
  *
  * Demonstrate the vidputs and vidattr functions.

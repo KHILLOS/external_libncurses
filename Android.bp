@@ -1,3 +1,115 @@
+config_opts = "--without-ada --without-cxx --without-manpages --without-pkg-config --without-tests --enable-widec --without-gpm"
+
+ncurses_cflags = [
+    "-DHAVE_CONFIG_H",
+    "-U_XOPEN_SOURCE",
+    "-D_XOPEN_SOURCE=500",
+    "-U_POSIX_C_SOURCE",
+    "-D_POSIX_C_SOURCE=199506L",
+    "-D_FILE_OFFSET_BITS=64",
+    "-DNDEBUG",
+    "-Wno-unused-parameter",
+    "-Wno-error=implicit-function-declaration",
+]
+
+gen_ncurses_sources = [
+    "ncurses/codes.c",
+    "ncurses/comp_captab.c",
+    "ncurses/comp_userdefs.c",
+    "ncurses/expanded.c",
+    "ncurses/fallback.c",
+    "ncurses/lib_gen.c",
+    "ncurses/lib_keyname.c",
+    "ncurses/names.c",
+    "ncurses/unctrl.c",
+]
+
+gen_headers = [
+    "ncurses/init_keytry.h",
+    "include/config.h",
+    "include/curses.h",
+    "include/hashsize.h",
+    "include/ncurses_cfg.h",
+    "include/ncurses_def.h",
+    "include/ncurses_dll.h",
+    "include/parametrized.h",
+    "include/termcap.h",
+    "include/term.h",
+    "include/unctrl.h",
+    "include/ncurses.h",
+    "progs/transform.h",
+]
+
+gen_ncurses_headers = [
+    "init_keytry.h",
+]
+
+gen_include_headers = [
+    "config.h",
+    "curses.h",
+    "hashsize.h",
+    "ncurses_cfg.h",
+    "ncurses_def.h",
+    "ncurses_dll.h",
+    "parametrized.h",
+    "termcap.h",
+    "term.h",
+    "unctrl.h",
+    "ncurses.h",
+]
+
+gen_tput_headers = [
+    "transform.h",
+]
+
+genrule {
+    name: "libncurses_gen",
+    cmd: "export PATH=/usr/bin:/bin:$$PATH && "
+       + "cp -r $(location external_libncurses)/. $(genDir);"
+       + "cd $(genDir) && "
+       + "./configure " + config_opts + " && "
+       + "make -C include sources && "
+       + "make -C progs tic infocmp && "
+       + "./configure " + config_opts + " "
+       + "--prefix=/system --disable-database --with-fallbacks='linux vt100 xterm' "
+       + "--with-tic-path=$$(pwd)/progs/tic --with-infocmp-path=$$(pwd)/progs/infocmp && "
+       + "cd include && "
+       + "make sources && "
+       + "make -C ../ncurses sources && "
+       + "make -C ../progs transform.h && "
+       + "cp curses.h ncurses.h",
+    srcs: ["**/*"],
+    out: gen_ncurses_sources + gen_headers,
+}
+
+genrule {
+    name: "libncurses_gen_ncurses_sources",
+    srcs: [ ":libncurses_gen" ],
+    cmd: "cp -fpr $(in) $(genDir)/ncurses/",
+    out: gen_ncurses_sources,
+}
+
+genrule {
+    name: "libncurses_gen_ncurses_headers",
+    srcs: [ ":libncurses_gen" ],
+    cmd: "cp -fpr $(in) $(genDir)/",
+    out: gen_ncurses_headers,
+}
+
+genrule {
+    name: "libncurses_gen_include_headers",
+    srcs: [ ":libncurses_gen" ],
+    cmd: "cp -fpr $(in) $(genDir)/",
+    out: gen_include_headers,
+}
+
+genrule {
+    name: "libncurses_gen_tput_headers",
+    srcs: [ ":libncurses_gen" ],
+    cmd: "cp -fpr $(in) $(genDir)/",
+    out: gen_tput_headers,
+}
+
 package {
     default_applicable_licenses: ["external_libncurses_license"],
 }
@@ -8,243 +120,131 @@ license {
     license_text: ["COPYING"],
 }
 
+// Define the module type for libncurses
 cc_defaults {
     name: "libncurses_defaults",
-    cflags: [
-        "-Wno-error=implicit-function-declaration",
-        "-D_GNU_SOURCE",
-        "-D_FILE_OFFSET_BITS=64",
-        "-DTERM_DEFAULT_LINUX",
-    ],
     vendor_available: true,
     host_supported: true,
-    recovery_available: true,
-    export_include_dirs: ["include", "ncurses"],
-}
-
-genrule {
-    name: "ncurses_configure",
-    cmd: "cd $(genDir) && " +
-         "$(location external_libncurses)/configure " +
-         "--without-ada --without-cxx --without-manpages --without-tests " +
-         "--without-pkg-config --without-gpm --enable-widec " +
-         "--with-fallbacks='linux vt100 xterm' " +
-         "--host=x86_64-linux-android",
-    srcs: ["configure", "include/ncurses_cfg.h.in", "ncurses/ncurses_cfg.h.in"],
-    out: ["config.h", "include/ncurses_cfg.h", "ncurses/ncurses_cfg.h"],
-}
-
-genrule {
-    name: "ncurses_generate_sources",
-    cmd: "cd $(genDir) && make sources",
-    srcs: ["ncurses_configure"],
-    out: [
-        "include/ncurses_def.h",
-        "include/term.h",
-        "include/unctrl.h",
-        "ncurses/terminfo.def",
-        "ncurses/term_entry.h",
-        "ncurses/termcap_def.h",
-    ],
-    tools: ["ncurses_configure"],
-}
-
-cc_library_shared {
-    name: "libncurses",
-    defaults: ["libncurses_defaults"],
     srcs: [
-        "ncurses/base/atexit.c",
-        "ncurses/base/lib_addch.c",
-        "ncurses/base/lib_addstr.c",
-        "ncurses/base/lib_beep.c",
-        "ncurses/base/lib_bkgd.c",
-        "ncurses/base/lib_box.c",
-        "ncurses/base/lib_chgat.c",
-        "ncurses/base/lib_clear.c",
-        "ncurses/base/lib_clearok.c",
-        "ncurses/base/lib_clrbot.c",
-        "ncurses/base/lib_clrtoeol.c",
-        "ncurses/base/lib_color.c",
-        "ncurses/base/lib_cur_set.c",
-        "ncurses/base/lib_delch.c",
-        "ncurses/base/lib_deleteln.c",
-        "ncurses/base/lib_doupdate.c",
-        "ncurses/base/lib_echo.c",
-        "ncurses/base/lib_endwin.c",
-        "ncurses/base/lib_flash.c",
-        "ncurses/base/lib_getch.c",
-        "ncurses/base/lib_hline.c",
-        "ncurses/base/lib_insch.c",
-        "ncurses/base/lib_insdel.c",
-        "ncurses/base/lib_insnstr.c",
-        "ncurses/base/lib_insstr.c",
-        "ncurses/base/lib_instr.c",
-        "ncurses/base/lib_kernel.c",
-        "ncurses/base/lib_leaveok.c",
-        "ncurses/base/lib_longname.c",
-        "ncurses/base/lib_move.c",
-        "ncurses/base/lib_mvcur.c",
-        "ncurses/base/lib_mvwin.c",
-        "ncurses/base/lib_napms.c",
-        "ncurses/base/lib_newwin.c",
-        "ncurses/base/lib_overlay.c",
-        "ncurses/base/lib_pad.c",
-        "ncurses/base/lib_printw.c",
-        "ncurses/base/lib_raw.c",
-        "ncurses/base/lib_redrawln.c",
-        "ncurses/base/lib_refresh.c",
-        "ncurses/base/lib_restart.c",
-        "ncurses/base/lib_scanw.c",
-        "ncurses/base/lib_scroll.c",
-        "ncurses/base/lib_scrollok.c",
-        "ncurses/base/lib_set_term.c",
-        "ncurses/base/lib_slk.c",
-        "ncurses/base/lib_touchline.c",
-        "ncurses/base/lib_tstp.c",
-        "ncurses/base/lib_unctrl.c",
-        "ncurses/base/lib_vline.c",
-        "ncurses/base/lib_window.c",
-        "ncurses/base/mvcur.c",
-        "ncurses/base/tty.c",
-        "ncurses/base/wgetch.c",
-        "ncurses/tty/tty_update.c",
-        "ncurses/tinfo/lib_baudrate.c",
-        "ncurses/tinfo/lib_data.c",
-        "ncurses/tinfo/lib_kernel.c",
-        "ncurses/tinfo/lib_longname.c",
-        "ncurses/tinfo/lib_options.c",
-        "ncurses/tinfo/lib_setup.c",
-        "ncurses/tinfo/lib_termcap.c",
-        "ncurses/tinfo/lib_ti.c",
-        "ncurses/tinfo/lib_tparm.c",
-        "ncurses/tinfo/read_termcap.c",
-        "ncurses/tinfo/tinfo_driver.c",
-        "ncurses/tinfo/terminfo.c",
-        "ncurses/tinfo/tinfo_driver.c",
-        "progs/dump_entry.c",
-        "progs/tput.c",
-        "progs/clear.c",
+        "ncurses/tty/**/*.c",
+        "ncurses/base/**/*.c",
+        "ncurses/tinfo/**/*.c",
+        "ncurses/widechar/**/*.c",
+        "ncurses/trace/lib_trace.c",
+        "ncurses/trace/varargs.c",
+        "ncurses/trace/visbuf.c",
     ],
     exclude_srcs: [
         "ncurses/base/lib_driver.c",
-        "ncurses/tinfo/sigaction.c",
+        "ncurses/base/sigaction.c",
         "ncurses/tinfo/doalloc.c",
         "ncurses/tinfo/make_keys.c",
         "ncurses/tinfo/tinfo_driver.c",
     ],
-    generated_headers: ["ncurses_generate_sources"],
+    cflags: ncurses_cflags,
+    local_include_dirs: ["include", "ncurses"],
+    export_include_dirs: ["include", "ncurses", "menu"],
+    generated_sources: ["libncurses_gen_ncurses_sources"],
+    generated_headers: ["libncurses_gen_ncurses_headers", "libncurses_gen_include_headers"],
+    export_generated_headers: ["libncurses_gen_ncurses_headers", "libncurses_gen_include_headers"],
+}
+
+// Define the module type for libpanel
+cc_library_static {
+    name: "libpanel",
     vendor_available: true,
     host_supported: true,
-    recovery_available: true,
+    srcs: [
+        "panel/**/*.c",
+    ],
+    cflags: ncurses_cflags,
+    local_include_dirs: [
+        "panel",
+    ],
+    export_include_dirs: [
+        "panel",
+    ],
+    shared_libs: [
+        "libncurses",
+    ],
+    generated_headers: ["libncurses_gen_ncurses_headers", "libncurses_gen_include_headers"],
+}
+
+
+// Define the module type for libmenu
+cc_library_static {
+    name: "libmenu",
+    vendor_available: true,
+    host_supported: true,
+    srcs: [
+        "menu/**/*.c",
+    ],
+    cflags: ncurses_cflags,
+    local_include_dirs: [
+        "menu",
+    ],
+    export_include_dirs: [
+        "menu",
+    ],
+    shared_libs: [
+        "libncurses",
+    ],
+    generated_headers: ["libncurses_gen_ncurses_headers", "libncurses_gen_include_headers"],
+}
+
+cc_library_shared {
+    name: "libncurses",
+    vendor_available: true,
+    host_supported: true,
+    defaults: ["libncurses_defaults"],
 }
 
 cc_library_shared {
     name: "libncurses_recovery",
     defaults: ["libncurses_defaults"],
-    srcs: [
-        "ncurses/base/lib_addch.c",
-        "ncurses/base/lib_addstr.c",
-        "ncurses/base/lib_beep.c",
-        "ncurses/base/lib_bkgd.c",
-        "ncurses/base/lib_box.c",
-        "ncurses/base/lib_chgat.c",
-        "ncurses/base/lib_clear.c",
-        "ncurses/base/lib_clearok.c",
-        "ncurses/base/lib_clrbot.c",
-        "ncurses/base/lib_clrtoeol.c",
-        "ncurses/base/lib_color.c",
-        "ncurses/base/lib_cur_set.c",
-        "ncurses/base/lib_delch.c",
-        "ncurses/base/lib_deleteln.c",
-        "ncurses/base/lib_doupdate.c",
-        "ncurses/base/lib_echo.c",
-        "ncurses/base/lib_endwin.c",
-        "ncurses/base/lib_flash.c",
-        "ncurses/base/lib_getch.c",
-        "ncurses/base/lib_hline.c",
-        "ncurses/base/lib_insch.c",
-        "ncurses/base/lib_insdel.c",
-        "ncurses/base/lib_insnstr.c",
-        "ncurses/base/lib_insstr.c",
-        "ncurses/base/lib_instr.c",
-        "ncurses/base/lib_kernel.c",
-        "ncurses/base/lib_leaveok.c",
-        "ncurses/base/lib_longname.c",
-        "ncurses/base/lib_move.c",
-        "ncurses/base/lib_mvcur.c",
-        "ncurses/base/lib_mvwin.c",
-        "ncurses/base/lib_napms.c",
-        "ncurses/base/lib_newwin.c",
-        "ncurses/base/lib_overlay.c",
-        "ncurses/base/lib_pad.c",
-        "ncurses/base/lib_printw.c",
-        "ncurses/base/lib_raw.c",
-        "ncurses/base/lib_redrawln.c",
-        "ncurses/base/lib_refresh.c",
-        "ncurses/base/lib_restart.c",
-        "ncurses/base/lib_scanw.c",
-        "ncurses/base/lib_scroll.c",
-        "ncurses/base/lib_scrollok.c",
-        "ncurses/base/lib_set_term.c",
-        "ncurses/base/lib_slk.c",
-        "ncurses/base/lib_touchline.c",
-        "ncurses/base/lib_tstp.c",
-        "ncurses/base/lib_unctrl.c",
-        "ncurses/base/lib_vline.c",
-        "ncurses/base/lib_window.c",
-        "ncurses/tinfo/lib_baudrate.c",
-        "ncurses/tinfo/lib_data.c",
-        "ncurses/tinfo/lib_kernel.c",
-        "ncurses/tinfo/lib_longname.c",
-        "ncurses/tinfo/lib_options.c",
-        "ncurses/tinfo/lib_setup.c",
-        "ncurses/tinfo/lib_termcap.c",
-        "ncurses/tinfo/lib_ti.c",
-        "ncurses/tinfo/lib_tparm.c",
-        "ncurses/tinfo/read_termcap.c",
-        "ncurses/tinfo/terminfo.c",
-    ],
-    generated_headers: ["ncurses_generate_sources"],
-    vendor_available: true,
-    recovery_available: true,
+    recovery: true,
 }
 
-cc_library_static {
-    name: "libpanel",
-    defaults: ["libncurses_defaults"],
-    srcs: ["panel/*.c"],
-    generated_headers: ["ncurses_generate_sources"],
-    vendor_available: true,
-    host_supported: true,
-    recovery_available: true,
-}
-
-cc_library_static {
-    name: "libmenu",
-    defaults: ["libncurses_defaults"],
-    srcs: ["menu/*.c"],
-    generated_headers: ["ncurses_generate_sources"],
-    vendor_available: true,
-    host_supported: true,
-    recovery_available: true,
-}
-
+// Define the module type for libform
 cc_library_static {
     name: "libform",
-    defaults: ["libncurses_defaults"],
-    srcs: ["form/*.c"],
-    generated_headers: ["ncurses_generate_sources"],
     vendor_available: true,
     host_supported: true,
-    recovery_available: true,
+    srcs: [
+        "form/**/*.c",
+    ],
+    cflags: ncurses_cflags,
+    local_include_dirs: [
+        "form",
+    ],
+    export_include_dirs: [
+        "form",
+    ],
+    shared_libs: [
+        "libncurses",
+    ],
+    generated_headers: ["libncurses_gen_ncurses_headers", "libncurses_gen_include_headers"],
 }
 
+// Define the module type for tput
 cc_binary {
     name: "tput",
-    defaults: ["libncurses_defaults"],
-    srcs: ["progs/tput.c"],
-    shared_libs: ["libncurses"],
-    vendor_available: true,
-    host_supported: true,
-    recovery_available: true,
+    srcs: [
+        "progs/tput.c",
+        "progs/tparm_type.c",
+        "progs/clear_cmd.c",
+        "progs/reset_cmd.c",
+        "progs/transform.c",
+        "progs/tty_settings.c",
+    ],
+    cflags: ncurses_cflags,
+    local_include_dirs: [
+        "progs",
+    ],
+    shared_libs: [
+        "libncurses",
+    ],
+    generated_headers: ["libncurses_gen_ncurses_headers",
+                        "libncurses_gen_include_headers",
+                        "libncurses_gen_tput_headers"],
 }

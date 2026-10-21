@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * view.c -- a silly little viewer program
  *
  * written by Eric S. Raymond <esr@snark.thyrsus.com> December 1994

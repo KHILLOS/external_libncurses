@@ -25,6 +25,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 /*
  * $Id: term.priv.h,v 1.7 2021/11/20 23:33:33 tom Exp $

@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: demo_new_pair.c,v 1.27 2022/12/04 00:40:11 tom Exp $
  *
  * Demonstrate the alloc_pair() function.

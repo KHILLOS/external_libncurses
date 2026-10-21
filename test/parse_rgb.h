@@ -26,6 +26,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: parse_rgb.h,v 1.5 2020/02/02 23:34:34 tom Exp $
  *
  * Sample implementation of ncurses RGB extension from user_caps(5).

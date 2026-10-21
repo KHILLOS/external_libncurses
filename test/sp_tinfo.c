@@ -26,6 +26,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 /*
  * $Id: sp_tinfo.c,v 1.28 2022/12/10 23:23:27 tom Exp $

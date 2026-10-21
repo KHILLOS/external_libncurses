@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: picsmap.c,v 1.148 2022/12/04 00:40:11 tom Exp $
  *
  * Author: Thomas E. Dickey

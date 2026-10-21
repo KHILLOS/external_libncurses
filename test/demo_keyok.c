@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: demo_keyok.c,v 1.9 2022/12/10 23:31:31 tom Exp $
  *
  * Demonstrate the keyok() function.

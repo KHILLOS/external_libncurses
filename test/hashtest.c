@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * hashtest.c -- test hash mapping
  *
  * Generate timing statistics for vertical-motion optimization.

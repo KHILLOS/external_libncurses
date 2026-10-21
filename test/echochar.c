@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: echochar.c,v 1.25 2022/12/10 22:28:50 tom Exp $
  *
  * Demonstrate the echochar function (compare to dots.c).

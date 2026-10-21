@@ -26,6 +26,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 /*
  * $Id: linedata.h,v 1.8 2020/02/02 23:34:34 tom Exp $

@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: demo_forms.c,v 1.61 2022/12/04 00:40:11 tom Exp $
  *
  * Demonstrate a variety of functions from the form library.

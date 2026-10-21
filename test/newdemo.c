@@ -4,6 +4,9 @@
  *
  * $Id: newdemo.c,v 1.48 2022/12/10 23:36:05 tom Exp $
  */
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 #include <test.priv.h>
 

@@ -25,6 +25,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 /****************************************************************************
  *  Author: Thomas E. Dickey                                                *

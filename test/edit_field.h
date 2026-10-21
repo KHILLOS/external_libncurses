@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: edit_field.h,v 1.11 2020/02/02 23:34:34 tom Exp $
  *
  * Interface of edit_field.c

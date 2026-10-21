@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: test_opaque.c,v 1.15 2022/12/11 00:03:10 tom Exp $
  *
  * Author: Thomas E Dickey

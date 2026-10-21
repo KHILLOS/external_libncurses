@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: movewindow.c,v 1.53 2022/12/10 23:31:31 tom Exp $
  *
  * Demonstrate move functions for windows and derived windows from the curses

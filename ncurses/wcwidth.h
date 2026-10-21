@@ -58,6 +58,9 @@
  *
  * Latest version: http://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c
  */
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 #ifndef _WCWIDTH_H_incl
 #define _WCWIDTH_H_incl 1

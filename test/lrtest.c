@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * Test lower-right-hand corner access
  *
  * originally by Eric S. Raymond <esr@thyrsus.com>, written for animation

@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: ins_wide.c,v 1.30 2022/12/10 22:28:50 tom Exp $
  *
  * Demonstrate the wins_wstr() and wins_wch functions.

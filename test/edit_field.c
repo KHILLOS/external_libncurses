@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: edit_field.c,v 1.31 2020/02/02 23:34:34 tom Exp $
  *
  * A wrapper for form_driver() which keeps track of the user's editing changes

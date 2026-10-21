@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: test_termattrs.c,v 1.8 2022/12/10 23:23:27 tom Exp $
  *
  * Demonstrate the termattrs and term_attrs functions.

@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * Grand digital clock for curses compatible terminals
  * Usage: gdc [-s] [-t hh:mm:ss] [n] -- run for n seconds (default infinity)
  * Flags: -s: scroll

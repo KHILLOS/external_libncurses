@@ -22,6 +22,9 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.                               *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: test_mouse.c,v 1.27 2023/01/07 17:22:42 tom Exp $
  *
  * Author: Leonid S Usov

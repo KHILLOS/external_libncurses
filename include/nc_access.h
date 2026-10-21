@@ -25,6 +25,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 /* $Id: nc_access.h,v 1.2 2021/07/10 22:07:06 tom Exp $ */
 

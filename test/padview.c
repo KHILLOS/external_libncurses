@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * clone of view.c, using pads
  *
  * $Id: padview.c,v 1.22 2022/12/04 00:40:11 tom Exp $

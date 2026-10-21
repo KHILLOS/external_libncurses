@@ -25,6 +25,9 @@
  * sale, use or other dealings in this Software without prior written       *
  * authorization.                                                           *
  ****************************************************************************/
+/*
+ * SPDX-License-Identifier: MIT
+ */
 
 /*
  * $Id: test_delwin.c,v 1.4 2022/12/10 22:14:07 tom Exp $

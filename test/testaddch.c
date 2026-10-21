@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * This is an example written by Alexander V. Lukyanov <lav@yars.free.net>,
  * to demonstrate an inconsistency between ncurses and SVr4 curses.
  *

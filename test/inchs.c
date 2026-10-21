@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: inchs.c,v 1.19 2022/12/11 00:01:39 tom Exp $
  *
  * Author: Thomas E Dickey

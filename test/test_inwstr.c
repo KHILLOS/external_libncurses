@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: test_inwstr.c,v 1.8 2022/12/10 23:56:39 tom Exp $
  *
  * Author: Thomas E Dickey

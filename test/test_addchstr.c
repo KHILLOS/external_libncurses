@@ -27,6 +27,9 @@
  * authorization.                                                           *
  ****************************************************************************/
 /*
+ * SPDX-License-Identifier: MIT
+ */
+/*
  * $Id: test_addchstr.c,v 1.29 2022/12/10 22:28:50 tom Exp $
  *
  * Demonstrate the waddchstr() and waddch functions.
