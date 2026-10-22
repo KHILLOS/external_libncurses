@@ -201,8 +201,9 @@ cc_library_shared {
 
 cc_library_shared {
     name: "libncurses_recovery",
-    defaults: ["libncurses_defaults"],
+    // recovery-only module should not be vendor_available (avoids variant collision)
     recovery: true,
+    defaults: ["libncurses_defaults"],
 }
 
 // Define the module type for libform
