@@ -65,7 +65,7 @@ gen_tput_headers = [
 genrule {
     name: "libncurses_gen",
     cmd: "export PATH=/usr/bin:/bin:$$PATH && "
-       + "cp -r $(location external_libncurses)/. $(genDir);"
+       + "cp -r external/libncurses/. $(genDir);"
        + "cd $(genDir) && "
        + "./configure " + config_opts + " && "
        + "make -C include sources && "
